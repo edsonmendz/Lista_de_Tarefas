@@ -39,8 +39,9 @@
 
             if ( isset($_GET['pag']) && $_GET['pag'] == 'index') {
                 header('Location: index.php');
-            }
+            } else {
                 header('Location: todas_tarefas.php');
+            }
         }   
     } elseif ($acao == 'remover') {
         $tarefa = new Tarefa();
@@ -52,9 +53,9 @@
         $tarefaService->remover();
         if ( isset($_GET['pag']) && $_GET['pag'] == 'index') {
             header('Location: index.php');
-        }
+        } else {
             header('Location: todas_tarefas.php');
-
+        }
     } elseif ($acao == 'realizar') {
         $tarefa = new Tarefa();
         $tarefa->__set('id', $_GET['id']);
@@ -66,8 +67,9 @@
 
         if ( isset($_GET['pag']) && $_GET['pag'] == 'index') {
             header('Location: index.php');
-        }
+        } else {
             header('Location: todas_tarefas.php');
+        }
     } elseif ($acao == 'recuperarTarefasPendentes') {
         $tarefa = new Tarefa();
         $tarefa->__set('id_status', 1);
