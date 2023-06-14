@@ -60,6 +60,14 @@
 				//tarefa.inputTarefa.placeHolder = ''
 
 			}
+
+			function remover (id) {
+				location.href = 'todas_tarefas.php?acao=remover&id='+id;
+			}
+
+			function realizar(id){
+				location.href = 'todas_tarefas.php?acao=realizar&id='+id;
+			}
 		</script>
 	</head>
 
@@ -97,9 +105,13 @@
 											<?php echo $tarefa->tarefa ?> (<?php echo $tarefa->status ?>)
 										 </div>
 										<div class="col-sm-3 mt-2 d-flex justify-content-between">
-											<i class="fas fa-trash-alt fa-lg text-danger"></i>
+											<i class="fas fa-trash-alt fa-lg text-danger" onClick="remover(<?php echo $tarefa->id ?>)"></i>
+
+											<?php if($tarefa->status == 'pendente') { ?>
 											<i class="fas fa-edit fa-lg text-info" onClick="editar(<?php echo $tarefa->id ?>, '<?php echo $tarefa->tarefa ?>' )"></i>
-											<i class="fas fa-check-square fa-lg text-success"></i>
+											<i class="fas fa-check-square fa-lg text-success" onClick="realizar(<?php echo $tarefa->id ?>)"></i>
+												<?php
+											} ?>
 										</div>
 									</div>
 
